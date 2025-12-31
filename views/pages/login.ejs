@@ -1,0 +1,24 @@
+<%- include('../layouts/header') %>
+<div class="login-container">
+    <div class="login-box">
+        <div class="login-header">
+            <h1>CHIVWATI cha WANA</h1>
+            <p>Initiative Tracker</p>
+        </div>
+        <% if (error) { %>
+        <div class="alert alert-error"><%= error %></div>
+        <% } %>
+        <form method="POST" action="/auth/login" class="login-form">
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" name="username" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" required class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+    </div>
+</div>
+<%- include('../layouts/footer') %>

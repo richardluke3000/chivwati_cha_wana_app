@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> - <%= appName %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <% if (user) { %>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand"><%= appName %></div>
+            <div class="nav-menu">
+                <a href="/dashboard" class="nav-link">Dashboard</a>
+                <a href="/enrollment" class="nav-link">Children</a>
+                <a href="/reports" class="nav-link">Reports</a>
+                <% if (user.role === 'admin') { %>
+                <a href="/users" class="nav-link">Users</a>
+                <% } %>
+                <div class="nav-user">
+                    <span><%= user.full_name %></span>
+                    <a href="/auth/logout" class="btn-logout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <% } %>
+    <main class="main-content">

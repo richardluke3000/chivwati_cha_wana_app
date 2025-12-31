@@ -1,0 +1,46 @@
+<%- include('../../layouts/header') %>
+<div class="container">
+    <div class="page-header">
+        <h1>Children Enrollment</h1>
+        <% if (['admin', 'data_entry', 'pss_coordinator'].includes(user.role)) { %>
+        <a href="/enrollment/new" class="btn btn-primary">New Enrollment</a>
+        <% } %>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Serial #</th>
+                        <th>Child Name</th>
+                        <th>Age</th>
+                        <th>Sex</th>
+                        <th>District</th>
+                        <th>Facility</th>
+                        <th>VL Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% children.forEach(child => { %>
+                    <tr>
+                        <td><%= child.serial_number %></td>
+                        <td><%= child.child_name %></td>
+                        <td><%= child.child_age %></td>
+                        <td><%= child.child_sex %></td>
+                        <td><%= child.district %></td>
+                        <td><%= child.facility %></td>
+                        <td><span class="badge badge-<%= child.followup_vl_result_received === 'Yes' ? 'success' : 'warning' %>">
+                            <%= child.followup_vl_result_received || 'Pending' %>
+                        </span></td>
+                        <td>
+                            <a href="/enrollment/view/<%= child.enrollment_id %>" class="btn btn-sm">View</a>
+                        </td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<%- include('../../layouts/footer') %>

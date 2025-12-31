@@ -1,0 +1,106 @@
+<%- include('../../layouts/header') %>
+<div class="container">
+    <div class="page-header">
+        <h1><%= child ? 'Edit' : 'New' %> Enrollment</h1>
+    </div>
+    <% if (error) { %>
+    <div class="alert alert-error"><%= error %></div>
+    <% } %>
+    <form method="POST" class="form-horizontal">
+        <div class="card">
+            <div class="card-header"><h3>Child Information</h3></div>
+            <div class="card-body">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Serial Number *</label>
+                        <input type="text" name="serial_number" class="form-control" required 
+                               value="<%= child ? child.serial_number : '' %>">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Enrollment Date *</label>
+                        <input type="date" name="ccw_enrollment_date" class="form-control" required
+                               value="<%= child ? child.ccw_enrollment_date : '' %>">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Child Name *</label>
+                        <input type="text" name="child_name" class="form-control" required
+                               value="<%= child ? child.child_name : '' %>">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>Age (Years) *</label>
+                        <input type="number" name="age_years" class="form-control" min="0" max="18" required
+                               value="<%= child ? child.age_years : '' %>">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>Sex *</label>
+                        <select name="sex" class="form-control" required>
+                            <option value="">Select...</option>
+                            <option value="M" <%= child && child.sex === 'M' ? 'selected' : '' %>>Male</option>
+                            <option value="F" <%= child && child.sex === 'F' ? 'selected' : '' %>>Female</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>District *</label>
+                        <input type="text" name="district" class="form-control" required
+                               value="<%= child ? child.district : user.district || '' %>">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Facility *</label>
+                        <input type="text" name="facility" class="form-control" required
+                               value="<%= child ? child.facility : user.facility || '' %>">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header"><h3>ART Information</h3></div>
+            <div class="card-body">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label>ART Number</label>
+                        <input type="text" name="art_number" class="form-control"
+                               value="<%= child ? child.art_number : '' %>">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>ART Regimen</label>
+                        <input type="text" name="art_regimen" class="form-control"
+                               value="<%= child ? child.art_regimen : '' %>">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Duration on ART</label>
+                        <input type="text" name="duration_on_art" class="form-control"
+                               value="<%= child ? child.duration_on_art : '' %>">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header"><h3>Caregiver Information</h3></div>
+            <div class="card-body">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Caregiver Name</label>
+                        <input type="text" name="caregiver_name" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Contact Number</label>
+                        <input type="text" name="contact_number" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Physical Address</label>
+                    <textarea name="physical_address" class="form-control" rows="2"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save Enrollment</button>
+            <a href="/enrollment" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+<%- include('../../layouts/footer') %>

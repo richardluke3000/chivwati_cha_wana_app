@@ -1,0 +1,47 @@
+<%- include('../layouts/header') %>
+<div class="container">
+    <div class="page-header">
+        <h1>Dashboard</h1>
+        <p>Welcome, <%= user.full_name %></p>
+    </div>
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-number"><%= stats.totalChildren %></div>
+            <div class="stat-label">Total Children Enrolled</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number"><%= stats.byDistrict.length %></div>
+            <div class="stat-label">Districts Covered</div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h2>Recent Enrollments</h2>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Serial #</th>
+                        <th>Child Name</th>
+                        <th>District</th>
+                        <th>Facility</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% stats.recentEnrollments.forEach(child => { %>
+                    <tr>
+                        <td><%= child.serial_number %></td>
+                        <td><%= child.child_name %></td>
+                        <td><%= child.district %></td>
+                        <td><%= child.facility %></td>
+                        <td><%= new Date(child.ccw_enrollment_date).toLocaleDateString() %></td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<%- include('../layouts/footer') %>
