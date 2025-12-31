@@ -91,43 +91,6 @@ Password: admin123
 **⚠️ IMPORTANT:** Change the default password after first login!
 
 ## 📁 Project Structure
-
-```
-chivwati-app/
-├── public/
-│   ├── css/
-│   │   └── style.css         # Red-themed stylesheet
-│   └── js/
-│       └── main.js            # Client-side JavaScript
-├── src/
-│   ├── config/
-│   │   ├── database.js        # Database connection
-│   │   └── init-database.js   # Database initialization
-│   ├── middleware/
-│   │   └── auth.js            # Authentication middleware
-│   └── routes/
-│       ├── auth.js            # Login/logout routes
-│       ├── dashboard.js       # Dashboard routes
-│       ├── enrollment.js      # Child enrollment routes
-│       ├── reports.js         # Report routes
-│       └── users.js           # User management routes
-├── views/
-│   ├── layouts/
-│   │   ├── header.ejs         # Header template
-│   │   └── footer.ejs         # Footer template
-│   └── pages/
-│       ├── dashboard.ejs      # Dashboard page
-│       ├── login.ejs          # Login page
-│       ├── enrollment/        # Enrollment pages
-│       └── users/             # User management pages
-├── uploads/                   # File uploads directory
-├── .env                       # Environment configuration
-├── server.js                  # Main application file
-├── package.json               # Dependencies
-├── README.md                  # This file
-└── SETUP_INSTRUCTIONS.md      # Detailed setup guide
-```
-
 ## 👥 User Roles & Permissions
 
 | Role | Permissions |
